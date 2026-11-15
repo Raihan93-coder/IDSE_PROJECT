@@ -1,0 +1,156 @@
+2026-11-08 19:41:52,559 INFO Downloading public Kaggle heartbeat dataset
+2026-11-08 19:41:54,600 ERROR Training pipeline failed
+Traceback (most recent call last):
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connection.py", line 239, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 779, in urlopen
+    self._prepare_proxy(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 1074, in _prepare_proxy
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connection.py", line 827, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connection.py", line 254, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\urllib3\util\retry.py", line 555, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.kaggle.com', port=443): Max retries exceeded with url: /api/v1/datasets/download/shayanfazeli/heartbeat (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jyoth\OneDrive\Desktop\IDSE_Project\src\train.py", line 79, in download_data
+    response = requests.get("https://www.kaggle.com/api/v1/datasets/download/shayanfazeli/heartbeat", timeout=300)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='www.kaggle.com', port=443): Max retries exceeded with url: /api/v1/datasets/download/shayanfazeli/heartbeat (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jyoth\OneDrive\Desktop\IDSE_Project\src\train.py", line 120, in main
+    train_raw, test_raw = download_data()
+                          ~~~~~~~~~~~~~^^
+  File "C:\Users\jyoth\OneDrive\Desktop\IDSE_Project\src\train.py", line 93, in download_data
+    raise RuntimeError(f"Could not download Kaggle dataset; check network access: {exc}") from exc
+RuntimeError: Could not download Kaggle dataset; check network access: HTTPSConnectionPool(host='www.kaggle.com', port=443): Max retries exceeded with url: /api/v1/datasets/download/shayanfazeli/heartbeat (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-11-08 19:42:02,779 INFO Downloading public Kaggle heartbeat dataset
+2026-11-08 19:43:56,122 ERROR Training pipeline failed
+Traceback (most recent call last):
+  File "C:\Users\jyoth\OneDrive\Desktop\IDSE_Project\src\train.py", line 136, in main
+    rf_probe.fit(Xi, target)
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\ensemble\_forest.py", line 468, in fit
+    trees = Parallel(
+    ...<2 lines>...
+        prefer="threads",
+    )(
+        delayed(_parallel_build_trees)(
+    ...<12 lines>...
+        for i, t in enumerate(trees)
+    )
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\utils\parallel.py", line 91, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\parallel.py", line 2096, in __call__
+    next(output)
+    ~~~~^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\parallel.py", line 1697, in _get_outputs
+    self._start(iterator, pre_dispatch)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\parallel.py", line 1680, in _start
+    if self.dispatch_one_batch(iterator):
+       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\parallel.py", line 1562, in dispatch_one_batch
+    self._dispatch(tasks)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\parallel.py", line 1459, in _dispatch
+    job = self._backend.submit(batch, callback=batch_tracker)
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\_parallel_backends.py", line 339, in submit
+    return self._get_pool().apply_async(
+           ~~~~~~~~~~~~~~^^
+  File "C:\Users\jyoth\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\joblib\_parallel_backends.py", line 507, in _get_pool
+    self._pool = ThreadPool(self._n_jobs)
+                 ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 930, in __init__
+    Pool.__init__(self, processes, initializer, initargs)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 196, in __init__
+    self._change_notifier = self._ctx.SimpleQueue()
+                            ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\context.py", line 113, in SimpleQueue
+    return SimpleQueue(ctx=self.get_context())
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\queues.py", line 360, in __init__
+    self._reader, self._writer = connection.Pipe(duplex=False)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\connection.py", line 601, in Pipe
+    h2 = _winapi.CreateFile(
+        address, access, 0, _winapi.NULL, _winapi.OPEN_EXISTING,
+        _winapi.FILE_FLAG_OVERLAPPED, _winapi.NULL
+        )
+PermissionError: [WinError 5] Access is denied
+2026-11-08 20:00:37,041 INFO Ranking features on 500 stratified training beats
+2026-11-08 20:00:38,662 INFO Compared mutual-information and Random Forest feature rankings
+2026-11-08 20:02:35,018 INFO Ranking features on 500 stratified training beats
+2026-11-08 20:02:36,403 INFO Compared mutual-information and Random Forest feature rankings
+2026-11-08 20:03:51,757 INFO Randomized search trial 1/100: macro F1 0.7275; best 0.7275
+2026-11-08 20:04:15,868 INFO Randomized search trial 2/100: macro F1 0.7513; best 0.7513
+2026-11-08 20:04:19,927 INFO Randomized search trial 3/100: macro F1 0.7796; best 0.7796
+2026-11-08 20:04:35,632 INFO Randomized search trial 4/100: macro F1 0.7875; best 0.7875
+2026-11-08 20:04:42,219 INFO Randomized search trial 5/100: macro F1 0.7740; best 0.7875
+2026-11-08 20:04:52,560 INFO Randomized search trial 6/100: macro F1 0.7779; best 0.7875
+2026-11-08 20:04:59,408 INFO Randomized search trial 7/100: macro F1 0.7740; best 0.7875
+2026-11-08 20:05:03,450 INFO Randomized search trial 8/100: macro F1 0.7809; best 0.7875
+2026-11-08 20:06:47,585 INFO Randomized search trial 9/100: macro F1 0.7369; best 0.7875
+2026-11-08 20:06:47,585 INFO Stopping after five trials without >=0.1%% improvement
+2026-11-08 20:06:47,585 INFO Hyperparameter search complete; refitting best model on full training split
+2026-11-08 20:11:13,499 INFO Completed. Metrics: {'accuracy': 0.9769322126804312, 'precision_macro': 0.9307067366553504, 'recall_macro': 0.8502996961211402, 'f1_macro': 0.8862014050018466, 'cv_best_macro_f1': 0.7875173876279173, 'best_params': {'model__n_estimators': 120, 'model__min_samples_split': 20, 'model__min_samples_leaf': 1, 'model__max_features': 'sqrt', 'model__max_depth': None, 'model__bootstrap': False}, 'classification_report': '              precision    recall  f1-score   support\n\n           0       0.98      1.00      0.99     18118\n           1       0.91      0.67      0.77       556\n           2       0.96      0.92      0.94      1448\n           3       0.82      0.71      0.76       162\n           4       0.99      0.95      0.97      1608\n\n    accuracy                           0.98     21892\n   macro avg       0.93      0.85      0.89     21892\nweighted avg       0.98      0.98      0.98     21892\n'}

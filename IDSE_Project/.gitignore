@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+data/raw/*
+data/processed/*
+outputs/models/*
+outputs/figures/*
+outputs/metrics/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/figures/.gitkeep
+!outputs/models/.gitkeep
