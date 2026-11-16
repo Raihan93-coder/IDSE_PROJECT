@@ -1,0 +1,1 @@
+"""Fictional match simulation."""
