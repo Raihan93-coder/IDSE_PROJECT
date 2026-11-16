@@ -1,0 +1,3 @@
+"""IDSE Football Betting Simulator core package."""
+
+__version__ = "0.1.0"

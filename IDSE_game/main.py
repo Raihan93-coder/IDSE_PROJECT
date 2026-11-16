@@ -1,7 +1,5 @@
-"""Launch Touchline Data from this directory with ``python3 main.py``."""
-
-from src.app import run
-
+"""Start the IDSE Football Betting Simulator."""
+from idse_game.app import Game
 
 if __name__ == "__main__":
-    run()
+    Game().run()
